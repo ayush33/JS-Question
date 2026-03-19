@@ -1,3 +1,6 @@
+
+// Filter
+
 /**
  * 
  Array.prototype.filter creates a new array populated with the results of calling a provided function on every element in the calling array.
@@ -18,4 +21,36 @@ Array.prototype.myFilter = function (callbackFn, thisArg) {
       }
     }
     return result
+  };
+
+
+  // Reduce
+
+
+/**
+ * Array.prototype.reduce is a way of "reducing" elements in an array by calling a
+ *  "reducer" callback function on each element of the array in order, passing in the 
+ * return value from the calculation on the preceding element. The final result of running the reducer 
+ * across all elements of the array is a single value.
+ */
+[1, 2, 3].myReduce((prev, curr) => prev + curr, 0); // 6
+[1, 2, 3].myReduce((prev, curr) => prev + curr, 4); // 10
+
+Array.prototype.myReduce = function (callbackFn, initialValue) {
+
+    const noInitialValue = initialValue == undefined;
+    let len = this.length;
+     if(noInitialValue && len===0){
+        throw new TypeError('Reduce of empty array with no initial value'); 
+    }
+  
+    let acc = noInitialValue ? this[0] : initialValue
+    let index = noInitialValue ? 1 : 0
+  
+     for(let i=index; i<len; i++){
+      if(Object.hasOwn(this, i)){
+        acc = callbackFn(acc, this[i], i, this)
+      }
+     }
+       return acc;
   };

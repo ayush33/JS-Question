@@ -4,13 +4,13 @@ However, it introduces a layer of nesting in the code which may not be desired.
 It'd be nice to use setTimeout in this fashion:
 */
 
-export default async function sleep(duration) {
+async function sleep(duration) {
     return new Promise((resolve)=>{
        setTimeout(resolve, duration)
     })
   }
 
-  
+
 async function greeting() {
     console.log('Hello!');
     await sleep(2000);

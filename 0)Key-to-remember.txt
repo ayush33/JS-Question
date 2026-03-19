@@ -1,0 +1,38 @@
+1) Object.hasOwn(object, property)
+
+const user = {
+  name: "Ayush",
+  age: 28
+};
+
+console.log(Object.hasOwn(user, "name")); // true
+console.log(Object.hasOwn(user, "toString")); // false
+
+for (const key in obj) {
+  if (Object.hasOwn(obj, key)) {
+    console.log(key);
+  }
+}
+
+
+2) Type of collection
+
+Array - > Array.isArray(collection)
+Map, set -> collection instanceof Map || collection instanceof Set
+Object -> typeof collection === 'object'
+
+  export function isObject(value) {
+     if (value == null) {
+      return false;
+    }
+    const type = typeof value;
+    return type === 'object' || type === 'function';
+  }
+  
+  export function isPlainObject(value) {
+     if (value == null) {
+      return false;
+    }
+    const prototype = Object.getPrototypeOf(value);
+    return prototype === null || prototype === Object.prototype;
+  }
